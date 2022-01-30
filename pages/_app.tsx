@@ -1,13 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
+import { Grid } from '@mui/material';
 
-import { Typography } from 'antd';
-
-import 'antd/dist/antd.css';
-import '../styles/vars.css';
-import '../styles/global.css';
+import { Header } from 'components/Header';
+import 'styles/global.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,13 +13,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <title>Boku no Cato</title>
       </Head>
 
-      <header>
-        <Typography.Title>Boku no Cato</Typography.Title>
-      </header>
+      <Grid
+        bgcolor="#636C90"
+        height="100vh"
+        width="100vw"
+        gridTemplateRows="80px auto"
+      >
+        <Grid p={1}>
+          <Header />
+        </Grid>
 
-      <main>
-        <Component {...pageProps} />
-      </main>
+        <Grid textAlign="center">
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </Grid>
+      </Grid>
     </>
   );
 }

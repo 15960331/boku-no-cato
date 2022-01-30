@@ -1,39 +1,48 @@
 import React, { useState } from 'react';
-import { Image, Button } from 'antd';
+import { NextPage } from 'next';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { Box } from '@mui/material';
 import axios from 'axios';
 
-type ResType = {
-  data: { file :string }
+type Response = {
+  file :string;
 };
 
-export default function Page() {
+export const MyForm: NextPage = () => {
   const [source, setSource] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onFinish = async () => {
+  const onClick = async () => {
     setLoading(true);
-    const res: ResType = await axios.get('https://aws.random.cat/meow');
+    const res = await axios.get<Response>('https://aws.random.cat/meow');
     setSource(res.data.file);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    setLoading(false);
   };
 
   return (
-    <>
-      <div style={{ padding: 16 }}>
-        <Button
-          type="primary"
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <Box sx={{ p: 1 }}>
+        <LoadingButton
+          variant="contained"
           size="large"
           loading={loading}
-          htmlType="submit"
-          onClick={onFinish}
+          onClick={onClick}
         >
-          CAT
-        </Button>
+          CATTO
+        </LoadingButton>
+      </Box>
+      <div>
+        <Box
+          component="img"
+          src={source}
+          maxHeight="70%"
+          maxWidth="70%"
+        />
       </div>
-      <Image src={source} width="30%" />
-    </>
+    </Box>
   );
-}
+};
