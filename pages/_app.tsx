@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { Grid } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { Header } from 'components/Header';
 import 'styles/global.css';
@@ -13,21 +13,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <title>Boku no Cato</title>
       </Head>
 
-      <Grid
+      <Box
+        display="grid"
         bgcolor="#636C90"
         height="100vh"
-        width="100vw"
-        gridTemplateRows="80px auto"
+        width="100%"
+        gridTemplateRows="120px auto"
       >
-        <Grid p={1}>
+        <Box p={1} height="100%">
           <Header />
-        </Grid>
+        </Box>
 
-        <Grid textAlign="center">
+        <Box p={1} height="100%">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...pageProps} />
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </>
   );
 }

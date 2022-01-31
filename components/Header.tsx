@@ -7,6 +7,8 @@ export const Header: NextPage = () => (
     bgcolor: '#7092BE',
     borderRadius: 4,
     textAlign: 'center',
+    height: '100%',
+    width: '100%',
   }}
   >
     <Typography variant="h1">Boku no Cato</Typography>

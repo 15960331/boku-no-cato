@@ -23,6 +23,7 @@ export const MyForm: NextPage = () => {
     <Box
       display="flex"
       flexDirection="column"
+      justifyContent="start"
       alignItems="center"
     >
       <Box sx={{ p: 1 }}>
@@ -35,14 +36,13 @@ export const MyForm: NextPage = () => {
           CATTO
         </LoadingButton>
       </Box>
-      <div>
-        <Box
-          component="img"
-          src={source}
-          maxHeight="70%"
-          maxWidth="70%"
-        />
-      </div>
+      <Box
+        component="img"
+        src={source}
+        borderRadius={4}
+        maxHeight="600px"
+        maxWidth="600px"
+      />
     </Box>
   );
 };
