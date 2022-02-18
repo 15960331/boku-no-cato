@@ -15,7 +15,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
       <Box
         display="grid"
-        bgcolor="#636C90"
         height="100vh"
         width="100%"
         gridTemplateRows="120px auto"
